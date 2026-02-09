@@ -6,3 +6,5 @@ results/*
 statistical_inference
 *.txt
 *.csv
+demo*
+test*
