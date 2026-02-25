@@ -1,0 +1,15 @@
+# Python specific ignores
+__pycache__/
+*.pyc
+
+# IDE specific ignores (VS Code / PyCharm)
+.idea/
+*.iml
+
+# OS specific
+.DS_Store
+
+# Data/Model files you don't want to share publicly
+*.csv
+*.pth
+*.pkl
