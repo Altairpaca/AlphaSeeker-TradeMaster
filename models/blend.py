@@ -6,9 +6,9 @@ print(" Starting the Final Model Blend...")
 
 try:
     xgb_submission = pd.read_csv('submission_xgb_upgraded.csv')
-    gru_submission = pd.read_csv('submission_gru_final.csv')
+    gru_submission = pd.read_csv('submission_jane_street_gru.csv')
 except FileNotFoundError:
-    print(" ERROR: Make sure both 'submission_xgb_upgraded.csv' and 'submission_gru_final.csv' exist!")
+    print(" ERROR: Make sure both 'submission_xgb_upgraded.csv' and 'submission_jane_street_gru.csv' exist!")
     exit()
 
 print("Submissions loaded successfully.")
@@ -40,7 +40,7 @@ print("\n Final Blended Submission Summary:")
 print(blend_submission[targets].describe())
 
 # Save with a clear name so you know which one to upload
-blend_submission.to_csv('submission_final_blend.csv', index=False)
+blend_submission.to_csv('submission_final_blend2.csv', index=False)
 
 print("\n BLEND COMPLETE!")
-print("Submit the file: 'submission_final_blend.csv'")
+print("Submit the file: 'submission_final_blend2.csv'")
