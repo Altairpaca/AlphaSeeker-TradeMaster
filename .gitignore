@@ -13,3 +13,5 @@ __pycache__/
 *.csv
 *.pth
 *.pkl
+*finallgbm.py
+
