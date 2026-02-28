@@ -4,6 +4,7 @@ from sklearn.metrics import mean_absolute_error
 import torch
 import torch.nn as nn
 from torch.utils.data import DataLoader, TensorDataset
+import torch.nn.functional as F
 import warnings
 import gc
 
@@ -93,7 +94,7 @@ X_val, y_val = create_windows(val_set[feature_cols].values, val_set[['target_sho
 # 4. PYTORCH MODEL & TRAINING
 # ==========================================
 class ContextGRU(nn.Module):
-    def __init__(self, input_dim, hidden_dim, num_layers, output_dim, dropout):
+    def __init__(self, input_dim, hidden_dim=128, num_layers=2, output_dim=3, dropout=0.3):
         super(ContextGRU, self).__init__()
         self.gru = nn.GRU(input_dim, hidden_dim, num_layers, batch_first=True, dropout=dropout, bidirectional=False)
         self.fc = nn.Linear(hidden_dim, output_dim)
@@ -193,5 +194,5 @@ submission = pd.DataFrame({
     'target_long': final_preds[:, 2]
 })
 
-submission.to_csv('submission_gru_final.csv', index=False)
-print("\n Final GRU Submission saved as: submission_gru_final.csv")
+submission.to_csv('submission_jane_street_gru.csv', index=False)
+print("\n Final GRU Submission saved as: submission_jane_street_gru.csv")
