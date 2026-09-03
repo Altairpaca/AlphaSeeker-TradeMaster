@@ -10,9 +10,9 @@ The task uses minute-indexed tabular features and three forecasting targets with
 | --- | --- | --- |
 | XGBoost | `models/submissionpipelinexgb.py` | tree baseline with daily normalization, interaction features, chronological train/validation split, and weighted MAE evaluation |
 | GRU | `models/final_gru.py` | 30-step sequence model with contextual daily statistics and weighted multi-horizon loss |
-| Blend | `models/blend.py` | submission-level combination of model outputs |
+| Blend | `models/blend.py` | fixed 50/50 submission-level combination of model outputs |
 
-The code is retained close to the competition implementation rather than rewritten to imply a cleaner experiment than was actually run.
+The code is retained close to the competition implementation rather than rewritten to imply a cleaner experiment than was actually run. Comments and output names have been normalized where the original competition-time wording overstated leakage protection or carried unrelated temporary labels.
 
 ## Evaluation contract
 
@@ -62,7 +62,15 @@ with at least:
 - `feature_1` ... `feature_30`
 - `target_short`, `target_medium`, `target_long` in the training set
 
-The current scripts are research snapshots rather than a packaged library. They contain model training, validation, inference, and submission generation in one file so the original competition path remains auditable.
+Install the preserved Python dependencies, place the competition data under `dataset/`, then run the paths from the repository root:
+
+```bash
+python models/submissionpipelinexgb.py   # -> submission_xgb.csv
+python models/final_gru.py               # -> submission_gru.csv
+python models/blend.py                   # -> submission_blend.csv
+```
+
+These are research snapshots rather than a packaged library. Model training, validation, inference, and submission generation remain in the original standalone pipelines so the competition path stays auditable. CI therefore performs syntax/research-contract checks without pretending to reproduce scores in the absence of the private competition dataset.
 
 ## What this repository demonstrates
 
