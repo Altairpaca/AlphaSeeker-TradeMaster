@@ -1,0 +1,43 @@
+name: artifact-hygiene
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  static-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile preserved model scripts
+        run: python -m py_compile models/*.py
+      - name: Check public artifact contract
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          readme = Path('README.md').read_text(encoding='utf-8')
+          required = [
+              'Information-set and leakage audit',
+              'full-day normalization',
+              'chronological',
+              'live minute-by-minute',
+          ]
+          missing = [item for item in required if item not in readme]
+          if missing:
+              raise SystemExit(f'Missing research-boundary language: {missing}')
+
+          source = '\n'.join(path.read_text(encoding='utf-8') for path in Path('models').glob('*.py'))
+          forbidden = [
+              'completely prevent data leakage',
+              'submission_jane_street_gru.csv',
+              'True Kaggle Evaluation',
+          ]
+          found = [item for item in forbidden if item in source]
+          if found:
+              raise SystemExit(f'Stale or misleading artifact language remains: {found}')
+          PY
