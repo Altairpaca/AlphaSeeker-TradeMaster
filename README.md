@@ -2,6 +2,10 @@
 
 Financial time-series forecasting artifact from the **HKUST(GZ) TradeMaster Cup 2026**, where our team placed **5th**. This repository preserves the modeling work behind the competition submission and makes the evaluation assumptions explicit enough to distinguish an offline forecasting artifact from a deployable trading system.
 
+<p align="center">
+  <img src="docs/information-boundary.svg" alt="Offline competition information set versus causal live information set" width="96%">
+</p>
+
 ## Scope
 
 The task uses minute-indexed tabular features and three forecasting targets with different horizons. The repository currently contains three modeling paths:
