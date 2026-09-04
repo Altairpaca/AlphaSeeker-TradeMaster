@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 420" role="img" aria-labelledby="title desc">
+  <title id="title">Offline competition information set versus causal live information set</title>
+  <desc id="desc">A conceptual diagram explaining why full-day statistics can be valid for an offline competition artifact but leak future information in a live minute-by-minute setting.</desc>
+  <rect width="1100" height="420" rx="24" fill="#fbfaf6"/>
+  <text x="54" y="50" font-family="Georgia, 'Times New Roman', serif" font-size="27" font-weight="700" fill="#18212b">Information-set boundary</text>
+  <text x="54" y="76" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif" font-size="14" fill="#66717e">The same transformation can be valid offline and invalid live if it sees future minutes.</text>
+
+  <g font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Arial,sans-serif">
+    <rect x="54" y="116" width="456" height="246" rx="18" fill="#eef2f5" stroke="#c9d3da"/>
+    <text x="80" y="150" font-size="17" font-weight="700" fill="#234b63">Offline competition artifact</text>
+    <text x="80" y="175" font-size="12" fill="#61707d">Complete daily matrix is available before evaluation.</text>
+    <line x1="92" y1="252" x2="466" y2="252" stroke="#9baab5" stroke-width="2"/>
+    <g fill="#234b63">
+      <circle cx="116" cy="252" r="7"/><circle cx="172" cy="252" r="7"/><circle cx="228" cy="252" r="7"/><circle cx="284" cy="252" r="7"/><circle cx="340" cy="252" r="7"/><circle cx="396" cy="252" r="7"/><circle cx="452" cy="252" r="7"/>
+    </g>
+    <path d="M116 224 C188 186 362 186 452 224" fill="none" stroke="#8a6842" stroke-width="2.2"/>
+    <text x="284" y="210" text-anchor="middle" font-size="12" fill="#8a6842">full-day mean / std can use all minutes</text>
+    <text x="116" y="282" text-anchor="middle" font-size="11" fill="#697581">09:30</text>
+    <text x="452" y="282" text-anchor="middle" font-size="11" fill="#697581">15:00</text>
+    <rect x="80" y="304" width="404" height="36" rx="8" fill="#ffffff" stroke="#d4dbe0"/>
+    <text x="282" y="327" text-anchor="middle" font-size="12" font-weight="600" fill="#4e5c69">Valid only under this supplied information contract</text>
+
+    <rect x="590" y="116" width="456" height="246" rx="18" fill="#edf3f0" stroke="#cbd8d4"/>
+    <text x="616" y="150" font-size="17" font-weight="700" fill="#3e665d">Live minute-by-minute research</text>
+    <text x="616" y="175" font-size="12" fill="#63716d">At decision time t, later observations do not exist yet.</text>
+    <line x1="628" y1="252" x2="1002" y2="252" stroke="#9baaa5" stroke-width="2"/>
+    <g fill="#4f746b">
+      <circle cx="652" cy="252" r="7"/><circle cx="708" cy="252" r="7"/><circle cx="764" cy="252" r="7"/>
+    </g>
+    <g fill="#ffffff" stroke="#aab6b2" stroke-width="2">
+      <circle cx="820" cy="252" r="7"/><circle cx="876" cy="252" r="7"/><circle cx="932" cy="252" r="7"/><circle cx="988" cy="252" r="7"/>
+    </g>
+    <line x1="790" y1="196" x2="790" y2="295" stroke="#8a6842" stroke-width="2.3" stroke-dasharray="5 5"/>
+    <text x="790" y="190" text-anchor="middle" font-size="12" font-weight="700" fill="#8a6842">decision time t</text>
+    <path d="M652 224 C684 205 728 205 764 224" fill="none" stroke="#4f746b" stroke-width="2.2"/>
+    <text x="708" y="210" text-anchor="middle" font-size="12" fill="#4f746b">expanding / lagged statistics</text>
+    <text x="652" y="282" text-anchor="middle" font-size="11" fill="#697581">past</text>
+    <text x="932" y="282" text-anchor="middle" font-size="11" fill="#8d959d">future unavailable</text>
+    <rect x="616" y="304" width="404" height="36" rx="8" fill="#ffffff" stroke="#d4dbe0"/>
+    <text x="818" y="327" text-anchor="middle" font-size="12" font-weight="600" fill="#445851">Causal features must stop at the decision boundary</text>
+  </g>
+</svg>
